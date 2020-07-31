@@ -1,0 +1,38 @@
+{% extends 'basic_index.html' %}
+
+
+
+
+{% if user.is_admin %}
+
+{% block content %}
+
+<section class="login-area section-padding-100">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 col-lg-8">
+                    <div class="login-content">
+                        <h3>Welcome ADMIN</h3>
+                        <!-- Login Form -->
+                        <div class="login-form">
+                            <form action="puttingsongs.html" method="post" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Artist name</label>
+                                    <input type="text" name="artist_name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter artist_name">
+                                </div>
+                                <div class="form-group">
+                                    
+                                    <label for="exampleInputPassword1">Enter songs</label>
+                                    <input type="file" name="song" class="form-control" accept="audio/mpeg3" id="exampleInputPassword1" placeholder="Enter song" multiple/>
+                                </div>
+                                <button type="submit" class="btn oneMusic-btn mt-30">Submit</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{%endblock%}
+{% endif %}

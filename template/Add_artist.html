@@ -1,0 +1,40 @@
+{% extends 'basic_index.html' %}
+{% if user.is_admin %}
+
+{% block content %}
+
+<section class="login-area section-padding-100">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 col-lg-8">
+                    <div class="login-content">
+                        <h3>Welcome ADMIN</h3>
+                        <!-- Login Form -->
+                        <div class="login-form">
+                            <form action="Add_artist.html" method="post" enctype="multipart/form-data" >
+                                {% csrf_token %}
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Artist Name</label>
+                                    <input type="text" list="artist" name="artist_name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter artist_name">
+                                    <datalist name="artist_name" id="artist">
+                                    {% for artist in artists %}
+                                    <option value="{{artist.artist}}">{{artist.artist}}</option>
+                             
+                                    {% endfor %}
+                                    </datalist> 
+                                </div>
+                                <div class="form-group">
+                                    
+                                    <label for="exampleInputPassword1">Artist Image</label>
+                                    <input type="file" name="artistimage" class="form-control" accept="image" id="image" placeholder="Enter image"/>
+                                </div>
+                                <button type="submit" class="btn oneMusic-btn mt-30">Submit</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{%endblock%}
+{% endif %}
